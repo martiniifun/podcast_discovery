@@ -1,4 +1,9 @@
+import os
 import reflex as rx
+import reflex_clerk_api as reclerk
+from dotenv import load_dotenv
+
+load_dotenv("../../.env.dev")
 
 
 def navbar_link(text: str, url: str) -> rx.Component:
@@ -33,8 +38,19 @@ def navbar() -> rx.Component:
                     navbar_link("About", "/about"),
                     navbar_link("Pricing", "/pricing"),
                     navbar_link("Contact", "/contact"),
+                    rx.fragment(
+                        reclerk.signed_out(
+                            reclerk.sign_in_button(rx.button("Sign in", variant="outline")),
+                            reclerk.sign_up_button(rx.button("Sign up")),
+                        ),
+                    ),
+                    rx.fragment(
+                        reclerk.signed_in(
+                            reclerk.sign_out_button(rx.button("Log out")),
+                        ),
+                    ),
                     justify="end",
-                    spacing="5",
+                    spacing="3",
                 ),
                 justify="between",
                 align_items="center",
@@ -44,7 +60,7 @@ def navbar() -> rx.Component:
             rx.hstack(
                 rx.hstack(
                     rx.image(
-                        src="/logo.jpg",
+                        src="/64px.png",
                         width="2em",
                         height="auto",
                         border_radius="25%",

@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 
 
-load_dotenv()
+load_dotenv(".env.dev")
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
 config = rx.Config(
