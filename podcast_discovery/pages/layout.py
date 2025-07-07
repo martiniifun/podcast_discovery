@@ -13,21 +13,6 @@ def page_layout(children: rx.Component, title: str = "Page", *args, **kwargs) ->
                 rx.box(
                     children
                 ),
-                rx.link(
-                    rx.button("home"),
-                    href="/",
-                    is_external=False,
-                ),
-                rx.link(
-                    rx.button("contact"),
-                    href="/contact",
-                    is_external=False,
-                ),
-                rx.link(
-                    rx.button("about"),
-                    href="/about",
-                    is_external=False,
-                ),
                 spacing="5",
                 justify="center",
                 min_height="85vh",

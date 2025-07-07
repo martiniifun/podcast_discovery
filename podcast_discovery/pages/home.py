@@ -4,6 +4,7 @@ from podcast_discovery.layout import root_layout
 from podcast_discovery.states.State import State
 import reflex_clerk_api as reclerk
 from reflex_clerk_api import ClerkUser, ClerkState
+from podcast_discovery import auth
 
 
 @rx.page(route="/")
@@ -24,12 +25,17 @@ def index_page() -> rx.Component:
             rx.vstack(
                 rx.heading(welcome_message, size="9"),
                 rx.button("Click me", on_click=State.handle_click_event),
+                rx.link(
+                    rx.button("Contact us!"),
+                    href="/contact",
+                    is_external=False,
+                ),
+                spacing="5",
                 justify="center",
-                align="center",
-                height="30vw",
+                min_height="85vh",
             ),
-            spacing="5",
-            justify="center",
-            min_height="85vh",
-        )
+            size="4",
+
+        ),
+
     )
